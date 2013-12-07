@@ -6,5 +6,5 @@
 
 下载地址：[Chrome Web Store][2]
 
-[1]:http://www.tinybird.info/wp-content/uploads/2013/12/QQ20131129231654.png
+[1]:./截图.png
 [2]:https://chrome.google.com/webstore/detail/知乎日报/gmhhhkgomcbijkigoakidcpobpioebej
