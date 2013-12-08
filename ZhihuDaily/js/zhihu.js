@@ -113,8 +113,11 @@ function reload() {
 
 		$(window).scroll(function() {
 		
-			if (($(document).height() == ($(window).height() + $(window).scrollTop())) && $("#first-page").is(":visible")) {
+			if (($(document).height() <= ($(window).height() + $(window).scrollTop())) && $("#first-page").is(":visible")) {
 				//
+				var date_url = String(year) + String(month) + String(day);
+				var url = "http://news.at.zhihu.com/api/1.2/news/before/" + date_url;
+
 				var date = new Date(year + "-" + month + "-" + day);
 				day = date.getDate() - 1;
 				date.setDate(day);
@@ -128,11 +131,6 @@ function reload() {
 					day = "0" + String(day);
 				}
 				
-				var date_url = String(year) + String(month) + String(day);
-				
-				
-				
-				var url = "http://news.at.zhihu.com/api/1.2/news/before/" + date_url;
 				$.getJSON(url, function(data) {
 					// body...
 					var main_div = $('<div class="main"></div>');
