@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+
+    "name": "知乎日报",
+    "description": "知乎日报Chrome版",
+    "version": "2.0",
+
+    "app": {
+    	"background": {
+    		"scripts": ["js/background.js", "js/lib/angular.min.js"]
+    	}
+    },
+    "icons": {
+    	"16": "img/app-logo.png",
+    	"48": "img/app-logo.png",
+    	"128": "img/app-logo.png"
+    },
+
+    "permissions": [
+    	"http://*.zhihu.com/*",
+    	"http://*.zhimg.com/*"
+     ]
+}
