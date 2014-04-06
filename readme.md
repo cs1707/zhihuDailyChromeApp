@@ -8,6 +8,7 @@
 * [ui-bootstrap][3]
 * [ng-infinite-scroll][4]
 * [angular-scroll][5]
+
 ###License
 MIT
 
