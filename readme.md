@@ -1,13 +1,13 @@
-#知乎日报Chrome 
+##知乎日报Chrome 
 ![知乎日报][1]
 下载地址：[Chrome Web Store][2]
 
-###update
+###Update
 使用angularjs重构。
 ###Lib
-[ui-bootstrap][3]
-[ng-infinite-scroll][4]
-[angular-scroll][5]
+* [ui-bootstrap][3]
+* [ng-infinite-scroll][4]
+* [angular-scroll][5]
 ###License
 MIT
 
