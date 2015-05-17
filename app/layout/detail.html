@@ -1,0 +1,11 @@
+<div class="container-zhihu">
+  <div class="headline">
+    <div class="img-wrap">
+      <h1 class="headline-title">{{detail.title}}</h1>
+      <span class="img-source">{{detail.image_source}}</span>
+      <img class="zhihu-image-head" blob-src="{{detail.image}}" alt="">
+      <div class="img-mask"></div>
+    </div>
+  </div>
+  <div id="content-inner" chrome-bind-html="detail.body"></div>
+</div>
