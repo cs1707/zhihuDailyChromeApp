@@ -4,11 +4,6 @@
 
 ###Update
 使用angularjs重构。
-###Lib
-* [ui-bootstrap][3]
-* [ng-infinite-scroll][4]
-* [angular-scroll][5]
-
 ###License
 MIT
 
