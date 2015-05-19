@@ -23,16 +23,6 @@
           cache: true,
           responseType: 'blob'
         }).success(function(blob){
-          // console.log(blob);
-          // d.resolve(blob);
-          // var reader = new FileReader();
-          // reader.readAsDataURL(blob);
-          // reader.onload = function(e){
-          //   console.log(e);
-          //   d.resolve(target.reuslt);
-          // }
-          // d.resolve(a);
-          // d.resolve(new FileReaderSync().readAsDataURL(blob));
           d.resolve(window.URL.createObjectURL(blob));
         }).error(function(error){
           d.reject(error);
