@@ -15,7 +15,7 @@
     </carousel>
     <div class="list-wrap">
       <div class="datestamp">
-        {{list.date | zhihuDate | date: 'yyyy年MM月dd日'}}
+        {{list.date | zhihuDate: 'yyyy年MM月dd日'}}
       </div>
       <div class="list-group">
         <a ng-repeat="item in list.stories" ng-href="#/news/{{item.id}}" class="list-item clearfix"><div class="list-item-title">{{item.title}}</div><img class="list-item-img" blob-src="{{item.images[0]}}"></a>
@@ -24,7 +24,7 @@
     <div infinite-scroll-container="'#zhihu-list'" infinite-scroll-distance="1" infinite-scroll="getOldNews();">
       <div class="list-wrap" ng-repeat="daily in oldNews | orderBy: daily.date">
         <div class="datestamp">
-          {{daily.date | zhihuDate | date: 'yyyy年MM月dd日'}}
+          {{daily.date | zhihuDate: 'yyyy年MM月dd日'}}
         </div>
         <div class="list-group">
           <a ng-repeat="item in daily.stories" ng-href="#/news/{{item.id}}" class="list-item"><div class="list-item-title">{{item.title}}</div><img class="list-item-img" blob-src="{{item.images[0]}}"></a>
