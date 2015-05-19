@@ -3,7 +3,7 @@
 
     "name": "知乎日报",
     "description": "知乎日报Chrome版",
-    "version": "2.1",
+    "version": "2.2",
 
     "app": {
     	"background": {
