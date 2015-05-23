@@ -19,7 +19,7 @@
             return;
           }
           var html = $compile(angular.element(value.replace(/src/g, 'blob-src')))(scope);
-          html.find('a').attr('target', '_blank');
+          html.find('a').attr('target', '_blank').removeAttr('rel');
           elem.append(html);
        });
       }
