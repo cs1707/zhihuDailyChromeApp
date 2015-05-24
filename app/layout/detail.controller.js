@@ -9,7 +9,5 @@
         .then(function(data){
           $scope.detail = data;
         });
-      // $('#zhihu-detail').fadeIn();
-      // $('#zhihu-list').fadeOut();
     }
 })();
