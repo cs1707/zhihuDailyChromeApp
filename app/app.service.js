@@ -7,6 +7,8 @@
         getLatest: getLatest,
         getBefore: getBefore,
         getThemes: getThemes,
+        getTheme: getTheme,
+        getThemeBefore: getThemeBefore,
         getDetail: getDetail
       };
 
@@ -75,6 +77,39 @@
           .error(function(error){
             d.reject(error);
           });
+
+        return d.promise;
+      }
+
+      function getTheme(id) {
+        /*
+         * 获取制定的主题日报列表
+         */
+        var d = $q.defer();
+        $http.get('http://news-at.zhihu.com/api/4/theme/' + id)
+          .success(function(data){
+            d.resolve(data);
+          })
+          .error(function(error){
+            d.reject(error);
+          });
+
+        return d.promise;
+      }
+
+      function getThemeBefore(id, beforeId) {
+        /*
+         * 获取制定的主题日报之前的列表
+         */
+        var d = $q.defer();
+        $http.get('http://news-at.zhihu.com/api/4/theme/' + id + '/before/' + beforeId)
+          .success(function(data){
+            d.resolve(data);
+          })
+          .error(function(error){
+            d.reject(error);
+          });
+
         return d.promise;
       }
 
