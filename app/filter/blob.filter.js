@@ -1,5 +1,6 @@
 (function(){
   'use strict';
+  // it doesn't work
 
   angular.module('app')
     .filter('blob', function(zhihu){
@@ -9,10 +10,6 @@
 
       function filterFunc(input) {
         return zhihu.getBlobUrl(input);
-          // .then(function(blobUrl){
-          //   console.log(blobUrl);
-          //   return blobUrl;
-          // });
       }
 
     });
