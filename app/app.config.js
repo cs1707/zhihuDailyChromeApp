@@ -5,7 +5,14 @@
     .config(config)
     .run(run);
 
-  function config($stateProvider, $compileProvider, $urlRouterProvider, $sceDelegateProvider) {
+  function config($stateProvider, $compileProvider, $urlRouterProvider, $sceDelegateProvider, $provide) {
+    // Prevent Angular from sniffing for the history API
+    // since it's not supported in packaged apps.
+    $provide.decorator('$window', function($delegate) {
+      $delegate.history = null;
+      return $delegate;
+    });
+
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('app', {
