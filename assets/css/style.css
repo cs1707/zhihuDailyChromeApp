@@ -37,7 +37,7 @@ body {
 }
 
 .navbar-wrap {
-  /*height: 40px;*/
+  height: 40px;
 }
 .container-zhihu {
   width: 640px;
@@ -53,6 +53,9 @@ body {
 }
 .headline {
   border-bottom: 4px solid #f6f6f6;
+}
+.headline-description {
+  font-size: 14px;
 }
 .img-wrap {
   position: relative;
@@ -123,16 +126,34 @@ body {
 .datestamp {
   border-radius: 4px;
   padding: 8px 10px;
+  min-height: 36px;
+  min-width: 135px;
   display: inline-block;
   color: #fff;
   font-weight: bold;
   background-color: #009dd7;
 }
-/*.relative {
-  position: relative;
-  height: inherit;
+.overflow-auto {
+  overflow: auto;
 }
-*/
+.list-view .carousel{
+  min-height: 440px;
+}
+.sub-view {
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: auto;
+}
+.container-absolute {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
 #zhihu-list {
   position: absolute;
   top: 0;
@@ -144,16 +165,17 @@ body {
 }
 #zhihu-detail {
   position: absolute;
+  padding-top: 40px;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 20;
   overflow: auto;
-  padding-bottom: 100px;
 }
-.zhihu-detail.ng-enter,
-.zhihu-detail.ng-enter-active {
+
+.detail-view.ng-enter,
+.detail-view.ng-enter-active {
  -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight;
   -webkit-animation-duration: .8s;
@@ -161,7 +183,63 @@ body {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+.list-view.ng-hide-remove,
+.list-view.ng-hide-remove-active {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: .8s;
+  animation-duration: .8s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
 
+.detail-zhihu {
+  padding-bottom: 50px;
+}
+.detail-webview {
+  display: block;
+  width: 100%;
+  height: calc(100% - 4px);
+}
+.dropdown {
+  position: relative;
+}
+.zhihu-dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 28px;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+}
+.zhihu-dropdown-menu>li>a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.zhihu-dropdown-menu>li>a:hover {
+  text-decoration: none;
+  color: #262626;
+  background-color: #f5f5f5;
+}
+.open .zhihu-dropdown-menu {
+  display: block;
+}
 @-webkit-keyframes fadeInRight {
   0% {
     opacity: 0;
@@ -239,6 +317,26 @@ body {
     opacity: 1;
     -webkit-transform: none;
     transform: none;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 

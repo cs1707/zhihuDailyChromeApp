@@ -12,30 +12,36 @@
   <script src="assets/lib/angular/angular.min.js"></script>
   <script src="assets/lib/angular/angular-animate.min.js"></script>
   <script src="assets/lib/ui-router/angular-ui-router.min.js"></script>
+  <script src="assets/lib/ui-router-extras/ct-ui-router-extras.min.js"></script>
   <script src="assets/lib/jquery/jquery.min.js"></script>
   <script src="assets/lib/ngInfiniteScroll/ng-infinite-scroll.min.js"></script>
   <script src="assets/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
   <script src="app/app.module.js"></script>
   <script src="app/layout/list.controller.js"></script>
   <script src="app/layout/detail.controller.js"></script>
+  <script src="app/layout/theme.controller.js"></script>
   <script src="app/directive/blobSrc.directive.js"></script>
   <script src="app/directive/chromeBindHtml.directive.js"></script>
+  <script src="app/directive/zhihuThemes.directive.js"></script>
   <script src="app/filter/zhihuDate.filter.js"></script>
-  <script src="app/service.js"></script>
+  <script src="app/app.service.js"></script>
   <script src="app/app.config.js"></script>
 </head>
 <body>
   <div class="navbar-wrap">
     <nav class="navbar">
       <div class="container-zhihu">
-        <a ui-sref="list" class="navbar-brand">
+        <a ng-show="!$state.includes('app.detail')" href="#/" class="navbar-brand">
           <img src="assets/img/brand.png">
         </a>
-        <a ui-sref="list">首页</a>
-        <!-- <a href="#">主题日报</a -->
+        <a ng-show="$state.includes('app.detail')" ng-click="$previousState.go();" href="" class="navbar-brand">
+          <img src="assets/img/arrow-back.png">
+        </a>
+        <a href="#/">首页</a>
+        <span zhihu-themes></span>
       </div>
     </nav>
   </div>
-  <div ui-view class="relative"></div>
+  <div ui-view></div>
 </body>
 </html>

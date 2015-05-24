@@ -1,5 +1,5 @@
-<div class="container-zhihu">
-  <div class="headline">
+<div ng-if="detail.type == 0" class="container-zhihu detail-zhihu">
+  <div class="headline" ng-if="detail.image">
     <div class="img-wrap">
       <h1 class="headline-title">{{detail.title}}</h1>
       <span class="img-source">{{detail.image_source}}</span>
@@ -9,3 +9,8 @@
   </div>
   <div id="content-inner" chrome-bind-html="detail.body"></div>
 </div>
+<webview ng-if="detail.type == 1" class="detail-webview" name="detail-view" ng-src="{{detail.share_url}}"></webview>
+<div ng-if="detail.type == 2" class="container-zhihu detail-zhihu">
+  <div id="content-inner" chrome-bind-html="detail.body"></div>
+</div>
+
