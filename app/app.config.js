@@ -3,43 +3,56 @@
 
   angular.module('app')
     .config(config)
-    .run(function($rootScope){
-      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-        var $list = $('#zhihu-list');
-        var $detail = $('#zhihu-detail');
-        // console.log($list, $detail);
-        if(toState.name == 'list') {
-          $rootScope.isListShow = true;
-          // $rootScope.isDetailShow =false;
-          // $detail.fadeOut();
-        } else if(toState.name == 'list.detail') {
-          $rootScope.isListShow = false;
-          // $rootScope.isDetailShow = true;
-        }
-      });
-    });
+    .run(run);
 
-  function config($stateProvider, $compileProvider, $urlRouterProvider) {
+  function config($stateProvider, $compileProvider, $urlRouterProvider, $sceDelegateProvider) {
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider
-      .state('app', {
-        url: '/app',
-        template: 'hello'
-      })
-      .state('list', {
-        url: '/',
-        controller: 'listController',
-        templateUrl: 'app/layout/list.html'
-      })
-      .state('list.detail', {
-        url: '^/news/:id',
-        controller: 'detailController',
-        templateUrl: 'app/layout/detail.html'
-      });
+    $stateProvider.state('app', {
+      abstract: true,
+      templateUrl: 'app/layout/ui-view.html'
+    })
+    .state('app.list', {
+      url: '/',
+      views: {
+        'list@app': {
+          controller: 'listController',
+          templateUrl: 'app/layout/list.html'
+        }
+      },
+      sticky: true,
+      deepStateRedirect: true
+    })
+    .state('app.detail', {
+      url: '/news/:id',
+      views: {
+        'detail@app': {
+          controller: 'detailController',
+          templateUrl: 'app/layout/detail.html'
+        }
+      }
+    })
+    .state('app.theme', {
+      url: '/theme/:id',
+      views: {
+        'theme@app': {
+          controller: 'themeController',
+          templateUrl: 'app/layout/theme.html'
+        }
+      },
+      sticky: true,
+      deepStateRedirect: true
+    })
 
     $compileProvider
       .imgSrcSanitizationWhitelist(/^\s*(https?|http|file|tel|blob):/)
       .aHrefSanitizationWhitelist(/^\s*(https?|file|tel|blob|chrome-extension):/);
+
+    $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://**']);
+  }
+
+  function run($rootScope, $state, $previousState) {
+    $rootScope.$state = $state;
+    $rootScope.$previousState = $previousState;
   }
 })();
