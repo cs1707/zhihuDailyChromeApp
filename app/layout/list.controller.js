@@ -7,17 +7,18 @@
     function listController($scope, zhihu, $filter) {
 
       getLatest();
-      $scope.getOldNews = getOldNews();
 
       function getLatest() {
         zhihu.getLatest()
         .then(function(data){
           $scope.list = data;
+          $scope.getOldNews = getOldNews(data.date);
         });
       }
 
-      function getOldNews() {
-        var today = new Date();
+      function getOldNews(date) {
+        var reg = /^(\d{4})(\d{2})(\d{2})$/;
+        var today = new Date(date.replace(reg, '$1/$2/$3'));
         var currentDay = today.valueOf();
         $scope.oldNews = [];
         return function() {
