@@ -3,22 +3,21 @@
 
     "name": "知乎日报",
     "description": "知乎日报Chrome版",
-    "version": "2.5",
+    "version": "2.6",
 
     "app": {
-    	"background": {
-    		"scripts": ["background.js"]
-    	}
+        "background": {
+            "scripts": ["background.js"]
+        }
     },
     "icons": {
-    	"16": "logo.png",
-    	"48": "logo.png",
-    	"128": "logo.png"
+        "16": "logo.png",
+        "48": "logo.png",
+        "128": "logo.png"
     },
 
     "permissions": [
         "webview",
-    	"http://*.zhihu.com/*",
-    	"http://*.zhimg.com/*"
+        "<all_urls>"
      ]
 }
