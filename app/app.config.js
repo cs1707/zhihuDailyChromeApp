@@ -58,8 +58,15 @@
     $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://**']);
   }
 
-  function run($rootScope, $state, $previousState) {
+  function run($rootScope, $state, $previousState, $stickyState, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$previousState = $previousState;
+    $rootScope.reload = function(){
+      $state.transitionTo($state.current, $stateParams, {
+        reload: $state.current.name,
+        inherit: false,
+        notify: true
+      });
+    }
   }
 })();
