@@ -18,9 +18,6 @@
       function getOldTheme(id, beforeId) {
         var pendingFlag = false;
         var terminalFlag = false;
-        $scope.oldTheme = {
-          stories: []
-        };
 
         return function(){
           if(pendingFlag || terminalFlag) {
@@ -35,7 +32,7 @@
                 return false;
               }
               data.stories.forEach(function(item){
-                $scope.oldTheme.stories.push(item);
+                $scope.theme.stories.push(item);
               });
               beforeId = data.stories[data.stories.length - 1].id;
             })

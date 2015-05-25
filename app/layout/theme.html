@@ -1,18 +1,15 @@
 <div class="container-zhihu">
   <div class="headline">
     <div class="img-wrap">
-      <h1 class="headline-title">{{theme.name}}<br><span class="headline-description">{{theme.description}}</span></h1>
-      <span class="img-source">{{theme.image_source}}</span>
-      <img class="zhihu-image-head" blob-src="{{theme.background}}" alt="">
+      <h1 class="headline-title">{{::theme.name}}<br><span class="headline-description">{{::theme.description}}</span></h1>
+      <span class="img-source">{{::theme.image_source}}</span>
+      <img class="zhihu-image-head" blob-src="{{::theme.background}}" alt="">
       <div class="img-mask"></div>
     </div>
   </div>
   <div class="list-wrap">
-    <div class="list-group">
-      <a ng-repeat="item in theme.stories" ng-href="#/news/{{item.id}}" class="list-item clearfix"><div class="list-item-title">{{item.title}}</div><img ng-if="item.images && item.images[0]" class="list-item-img" blob-src="{{item.images[0]}}"></a>
-    </div>
     <div class="list-group" infinite-scroll-container="'#theme'" infinite-scroll-distance=".5" infinite-scroll="getOldTheme();">
-      <a ng-repeat="item in oldTheme.stories" ng-href="#/news/{{item.id}}" class="list-item clearfix"><div class="list-item-title">{{item.title}}</div><img ng-if="item.images && item.images[0]" class="list-item-img" blob-src="{{item.images[0]}}"></a>
+      <a ng-repeat="item in theme.stories" ng-href="#/news/{{::item.id}}" class="list-item clearfix"><div class="list-item-title">{{::item.title}}</div><img ng-if="item.images && item.images[0]" class="list-item-img" blob-src="{{::item.images[0]}}"></a>
     </div>
   </div>
 </div>

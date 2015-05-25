@@ -38,7 +38,7 @@
          * 获取最新消息
          */
         var d = $q.defer();
-        $http.get('http://news-at.zhihu.com/api/4/news/latest', {cache: true})
+        $http.get('http://news-at.zhihu.com/api/4/news/latest')
           .success(function(data){
             d.resolve(data);
           })
@@ -54,7 +54,7 @@
          * 获取历史消息 date: 20150516
          */
         var d = $q.defer();
-        $http.get('http://news.at.zhihu.com/api/4/news/before/' + date)
+        $http.get('http://news.at.zhihu.com/api/4/news/before/' + date, {cache: true})
           .success(function(data){
             d.resolve(data);
           })
