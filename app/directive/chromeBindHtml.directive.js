@@ -20,23 +20,24 @@
           if(!value) {
             return;
           }
-          // 正则的目的是防止angular编译时遇到{{}}出错。
-          var dom = parser.parseFromString(value.replace(/\{\{/g, '[['), 'text/html');
-          $(dom)
-            .find('img')
+
+          // 将图片的src 替换为 blob-src
+          var imgReg = /<img\s+[^>]*>/gi;
+          var replacedStr = value.replace(imgReg, function(match){
+            return match.replace(/\ssrc(?=(\s*=))/i, ' blob-src');
+          });
+
+          var html = elem.html(replacedStr);
+          $(html).find('img')
             .each(function(){
-              var $this = $(this);
-              $this.attr('blob-src', $this.attr('src'))
-                .removeAttr('src');
+              // 编译 blob-src
+              $compile(this)(scope);
             })
             .end()
             .find('a')
             .attr('target', '_blank')
             .removeAttr('rel');
-            // rel 属性会导致chrome 崩溃
-
-          var compiledHtml = $compile(dom.body)(scope);
-          elem.replaceWith(compiledHtml);
+            // 在mac下rel标签会导致chrome崩溃
        });
       }
     });
