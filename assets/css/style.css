@@ -123,6 +123,20 @@ body {
   float: right;
   width: 90px;
 }
+.back-to-top {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  margin-left: 400px;
+  width: 38px;
+  height: 38px;
+  background: url(/assets/img/back-to-top.png) no-repeat 50% 50%;
+  background-size: 100%;
+  cursor: pointer;
+}
+.back-to-top:hover {
+  background-image: url(/assets/img/back-to-top-hover.png);
+}
 .datestamp {
   border-radius: 4px;
   padding: 8px 10px;
@@ -192,7 +206,19 @@ body {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-
+.box-recommender {
+  margin: 10px;
+}
+.box-recommender a {
+  margin-right: .5em;
+  text-decoration: none;
+}
+.box-recommender .avatar-circle {
+  width: 35px;
+}
+.avatar-circle {
+  border-radius: 50%;
+}
 .detail-zhihu {
   padding-bottom: 50px;
 }

@@ -12,7 +12,7 @@
       <div class="img-mask"></div>
     </slide>
   </carousel>
-  <div infinite-scroll-container="'#list'" infinite-scroll-distance="1" infinite-scroll="getOldNews();">
+  <div infinite-scroll-container="'#list'" infinite-scroll-distance=".5" infinite-scroll="getOldNews();">
     <div class="list-wrap" ng-repeat="daily in list">
       <div class="datestamp">
         {{::daily.date | zhihuDate: 'yyyy年MM月dd日'}}
@@ -22,4 +22,5 @@
       </div>
     </div>
   </div>
- </div>
+</div>
+<div class="back-to-top" back-to-top="#list"></div>
