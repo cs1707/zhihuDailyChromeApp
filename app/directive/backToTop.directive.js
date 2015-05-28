@@ -15,10 +15,14 @@
         $container.on('scroll', scrollListener);
         $(elem).hide().on('click', scrollToTop);
         scope.$on('$destroy', function(){
-          $container.off('scroll', scrollListener);
+          $container.off('scroll', throttleScroll);
         });
 
-        function scrollListener(e) {
+        function throttleScroll() {
+          throttle(scrollListener);
+        }
+
+        function scrollListener() {
           if ($container.scrollTop() > $container.height()) {
             $(elem).fadeIn();
           } else {
@@ -31,6 +35,13 @@
             scrollTop: 0
           }, 800);
         }
+      }
+
+      function throttle(method, context) {
+        clearTimeout(method.tId);
+        method.tId = setTimeout(function(){
+          method.call(context);
+        }, 3000);
       }
     });
 
