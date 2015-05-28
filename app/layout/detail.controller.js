@@ -15,6 +15,13 @@
         zhihu.getDetail($stateParams.id)
           .then(function(data){
             $scope.detail = data;
+            if(data.recommenders) {
+              // not good
+              zhihu.getRecommenders($stateParams.id)
+                .then(function(recommendersDetail){
+                  $scope.detail.recommendersDetail = recommendersDetail;
+                });
+            }
           });
       }
     }

@@ -9,7 +9,8 @@
         getThemes: getThemes,
         getTheme: getTheme,
         getThemeBefore: getThemeBefore,
-        getDetail: getDetail
+        getDetail: getDetail,
+        getRecommenders: getRecommenders
       };
 
       return service;
@@ -128,5 +129,22 @@
 
         return d.promise;
       }
+
+      function getRecommenders(id) {
+        /*
+         * 获取推荐者
+         */
+        var d = $q.defer();
+        $http.get('http://news-at.zhihu.com/api/4/story/' + id + '/recommenders', {cache: true})
+          .success(function(data){
+            d.resolve(data);
+          })
+          .error(function(error){
+            d.reject(error);
+          });
+
+        return d.promise;
+      }
+
     });
 })();
