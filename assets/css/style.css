@@ -98,7 +98,7 @@ body {
   text-decoration: none;
 }
 .list-wrap {
-  padding-top: 10px;
+  margin-top: 10px;
 }
 .list-group .list-item{
   display: block;

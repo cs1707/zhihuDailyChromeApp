@@ -1,6 +1,6 @@
 <div class="container-zhihu">
   <carousel interval="5000">
-    <slide ng-repeat="slide in list[0].top_stories" active="slide.active">
+    <slide ng-repeat="slide in ::list[0].top_stories" active="slide.active">
       <div>
       <img class="zhihu-image-head" blob-src="{{::slide.image}}" alt="">
       </div>
