@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-cmn-Hans" ng-app="app" ng-csp>
+<head>
+  <meta charset="UTF-8">
+  <title>知乎日报</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- build:css(./) assets/css/style.css -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- endbuild -->
+
+  <!-- build:js assets/js/lib.js -->
+  <!-- bower:js -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js(./) assets/js/app.js -->
+  <!-- inject:js -->
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
+<body>
+  <div class="navbar-wrap">
+    <nav class="navbar">
+      <div class="container-zhihu">
+        <a ng-show="!$state.includes('app.detail')" href="#/" class="navbar-brand">
+          <img src="assets/img/brand.png">
+        </a>
+        <a ng-show="$state.includes('app.detail')" ng-click="$previousState.go();" href="" class="navbar-brand">
+          <img src="assets/img/arrow-back.png">
+        </a>
+        <a href="#/">首页</a>
+        <span zhihu-themes></span>
+        <a ng-show="!$state.includes('app.detail')" href="" ng-click="reload()">刷新</a>
+      </div>
+    </nav>
+  </div>
+  <div ui-view></div>
+</body>
+</html>

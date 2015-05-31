@@ -215,3 +215,6 @@ pip-log.txt
 .mr.developer.cfg
 
 *.zip
+
+**/bower_components
+**/node_modules
