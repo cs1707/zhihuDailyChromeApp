@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-var source = 'src/';
+var source = 'source/';
 var config = {
   source: source,
   index: source + 'index.html',
@@ -23,8 +23,8 @@ gulp.task('wiredep', function(){
 
 gulp.task('inject', ['wiredep'], function(){
   return gulp.src(config.index)
-    .pipe($.inject(gulp.src(config.source + 'app/**/*.js').pipe($.angularFilesort())))
-    .pipe($.inject(gulp.src(config.source + '**/*.css')))
+    .pipe($.inject(gulp.src(config.source + 'app/**/*.js').pipe($.angularFilesort()), {relative: true}))
+    .pipe($.inject(gulp.src(config.source + '**/*.css'), {relative: true}))
     .pipe(gulp.dest(config.source));
 });
 
@@ -51,28 +51,30 @@ gulp.task('optimize', ['inject'], function(){
     .pipe($.uglify())
     .pipe(jsLibFilter.restore())
     // rev
-    .pipe($.rev())
+    // .pipe($.rev())
     .pipe(assets.restore())
     .pipe($.useref())
-    .pipe($.revReplace())
+    // .pipe($.revReplace())
     .pipe(gulp.dest(config.build));
 });
 
-gulp.task('build', ['optimize', 'image', 'manifest', 'html']);
+gulp.task('build', ['optimize', 'mv']);
 
 gulp.task('default', ['inject']);
 
-gulp.task('image', function(){
-  gulp.src(config.source + 'assets/img/**/*')
-    .pipe(gulp.dest(config.build + 'assets/img/'));
-});
-
-gulp.task('manifest', function(){
-  gulp.src(['manifest.json', 'logo.png'])
+gulp.task('mv', function(){
+  gulp.src([
+      config.source + 'background.js',
+      config.source + 'manifest.json',
+    ])
     .pipe(gulp.dest(config.build));
+  gulp.src(config.source + 'app/**/*.html')
+    .pipe(gulp.dest(config.build + '/app'));
+  gulp.src(config.source + 'img/**/*')
+    .pipe(gulp.dest(config.build + '/img'));
 });
 
-gulp.task('html', function(){
-  gulp.src(config.source + 'app/**/*.html')
-    .pipe(gulp.dest(config.build + 'app'));
-})
+gulp.task('clean', function(){
+  return gulp.src(config.build)
+    .pipe($.clean());
+});

@@ -18,7 +18,8 @@
     "gulp-filter": "latest",
     "gulp-load-plugins": "latest",
     "gulp-angular-filesort": "latest",
-    "gulp-ng-annotate": "latest"
+    "gulp-ng-annotate": "latest",
+    "gulp-clean": "latest"
   },
   "repository": {
     "type": "git",

@@ -9,7 +9,7 @@
 bower install
 npm install
 ```
-通过以下`gulp`命令完成开发版本构建,直接在chrome引入当前目录就可以开发了。
+通过以下`gulp`命令完成开发版本构建,直接在chrome引入source就可以开发了。
 
 ```
 gulp
@@ -19,7 +19,7 @@ gulp
 ```
 gulp build
 ```
-并且将根目录的`backgroud.js`复制到`build`目录下,修改`var index = 'src/index.html'`为`var index = 'index.html'`。发布时只需发布`build`目录下文件即可。
+发布时只需发布`build`目录下文件即可。
 
 
 ###更新日志：
