@@ -31,7 +31,7 @@
       deepStateRedirect: true
     })
     .state('app.detail', {
-      url: '/news/:id',
+      url: '/news/:id/:themeId',
       views: {
         'detail@app': {
           controller: 'detailController',
@@ -40,7 +40,7 @@
       }
     })
     .state('app.theme', {
-      url: '/theme/:id',
+      url: '/theme/:themeId',
       views: {
         'theme@app': {
           controller: 'themeController',
@@ -49,7 +49,7 @@
       },
       sticky: true,
       deepStateRedirect: true
-    })
+    });
 
     $compileProvider
       .imgSrcSanitizationWhitelist(/^\s*(https?|http|file|tel|blob):/)
@@ -58,15 +58,14 @@
     $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://**']);
   }
 
-  function run($rootScope, $state, $previousState, $stickyState, $stateParams) {
+  function run($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
-    $rootScope.$previousState = $previousState;
-    $rootScope.reload = function(){
-      $state.transitionTo($state.current, $stateParams, {
-        reload: $state.current.name,
-        inherit: false,
-        notify: true
-      });
-    }
+    $rootScope.$on('$stateChangeSuccess', function(){
+      if($stateParams.themeId) {
+        $rootScope.$historyUrl = '#/theme/' + $stateParams.themeId;
+      } else {
+        $rootScope.$historyUrl = '#/';
+      }
+    });
   }
 })();

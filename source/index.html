@@ -34,12 +34,13 @@
   <script src="app/layout/theme.controller.js"></script>
   <script src="app/layout/list.controller.js"></script>
   <script src="app/layout/detail.controller.js"></script>
-  <script src="app/filter/zhihuDate.filter.js"></script>
-  <script src="app/filter/blob.filter.js"></script>
   <script src="app/directive/zhihuThemes.directive.js"></script>
+  <script src="app/directive/page.directive.js"></script>
   <script src="app/directive/chromeBindHtml.directive.js"></script>
   <script src="app/directive/blobSrc.directive.js"></script>
   <script src="app/directive/backToTop.directive.js"></script>
+  <script src="app/filter/zhihuDate.filter.js"></script>
+  <script src="app/filter/blob.filter.js"></script>
   <script src="app/app.service.js"></script>
   <script src="app/app.config.js"></script>
   <!-- endinject -->
@@ -48,16 +49,17 @@
 <body>
   <div class="navbar-wrap">
     <nav class="navbar">
-      <div class="container-zhihu">
+      <div class="container-zhihu relative">
         <a ng-show="!$state.includes('app.detail')" href="#/" class="navbar-brand">
           <img src="/img/brand.png">
         </a>
-        <a ng-show="$state.includes('app.detail')" ng-click="$previousState.go();" href="" class="navbar-brand">
+        <a ng-show="$state.includes('app.detail')" ng-href="{{$historyUrl}}" class="navbar-brand">
           <img src="/img/arrow-back.png">
         </a>
         <a href="#/">首页</a>
         <span zhihu-themes></span>
-        <a ng-show="!$state.includes('app.detail')" href="" ng-click="reload()">刷新</a>
+        <a href="javascript:void(0)" ng-click="$state.reload()">刷新</a>
+        <span zhihu-page></span>
       </div>
     </nav>
   </div>

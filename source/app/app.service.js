@@ -1,7 +1,15 @@
 (function(){
   'use strict';
   angular.module('app')
-    .factory('zhihu', function($q, $http) {
+    .factory('zhihu', zhihuFactory)
+    .value('zhihuList', {
+      main: [],
+      theme: {
+
+      }
+    });
+
+    function zhihuFactory($q, $http, $filter) {
       var service = {
         getBlobUrl: getBlobUrl,
         getLatest: getLatest,
@@ -21,7 +29,7 @@
          */
         var d = $q.defer();
         $http({
-          method: "GET",
+          method: 'GET',
           url: url,
           cache: true,
           responseType: 'blob'
@@ -103,7 +111,7 @@
          * 获取制定的主题日报之前的列表
          */
         var d = $q.defer();
-        $http.get('http://news-at.zhihu.com/api/4/theme/' + id + '/before/' + beforeId)
+        $http.get('http://news-at.zhihu.com/api/4/theme/' + id + '/before/' + beforeId, {cache: true})
           .success(function(data){
             d.resolve(data);
           })
@@ -145,6 +153,6 @@
 
         return d.promise;
       }
+    }
 
-    });
 })();

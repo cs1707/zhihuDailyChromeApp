@@ -4,7 +4,7 @@
   angular.module('app')
     .controller('listController', listController);
 
-    function listController($scope, zhihu, $filter) {
+    function listController($scope, zhihu, $filter, zhihuList) {
 
       getLatest();
 
@@ -12,6 +12,9 @@
         zhihu.getLatest()
         .then(function(data){
           $scope.list = [data];
+          zhihuList.main = data.stories.map(function(story){
+            return story.id;
+          });
           $scope.getOldNews = getOldNews(data.date);
         });
       }
@@ -26,9 +29,15 @@
             return false;
           }
           pendingFlag = true;
-          zhihu.getBefore($filter('date')(currentDay, 'yyyyMMdd'))
+          return zhihu.getBefore($filter('date')(currentDay, 'yyyyMMdd'))
             .then(function(data){
+              if(!data || !data.date) {
+                return false;
+              }
               $scope.list.push(data);
+              data.stories.forEach(function(story){
+                zhihuList.main.push(story.id);
+              });
               currentDay -= 86400000;
             })
             .finally(function(){

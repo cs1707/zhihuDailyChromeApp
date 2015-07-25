@@ -93,6 +93,25 @@ body {
   background: linear-gradient(to bottom, rgba(0,0,0,0) 25%,rgba(0,0,0,0.6) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#99000000',GradientType=0 );
 }
+.relative {
+  position: relative;
+}
+.page {
+  position: absolute;
+  margin-top: 5px;
+  background-color: #1cade9;
+  display: inline-block;
+  border-radius: 4px;
+}
+.page:hover {
+  background-color: #1fb3f0;
+}
+.page-pre {
+  right: 80px;
+}
+.page-next {
+  right: 0;
+}
 .carousel-caption a{
   color: #fff;
   text-decoration: none;
