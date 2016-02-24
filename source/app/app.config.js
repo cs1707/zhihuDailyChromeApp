@@ -9,7 +9,10 @@
     // Prevent Angular from sniffing for the history API
     // since it's not supported in packaged apps.
     $provide.decorator('$window', function($delegate) {
-      $delegate.history = null;
+      Object.defineProperty($delegate, 'history', {get: function(){
+          return null;
+        }
+      });
       return $delegate;
     });
 
